@@ -1,12 +1,9 @@
 steps:
-- name: 'node'
-  entrypoint: 'npm'
-  args: ['npm', 'install']
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
 
-- name: node
-  entrypoint: node
+- name: 'gcr.io/cloud-builders/npm'
   args:
-  - 'npm'
   - 'publish'
   - '--registry=https://us-central1.pkg.dev/$PROJECT_ID/private-marketplace-package'
 
