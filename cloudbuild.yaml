@@ -1,4 +1,9 @@
 steps:
+- name: 'gcr.io/cloud-builders/secret-manager'
+  args: ['access', 'latest', 'projects/$PROJECT_ID/secrets/$_MARKETPLACE_TOKEN_ENV']
+  outputs:
+    credentials: '$(SECRET_MANAGER_ACCESS_TOKEN)'
+
 - name: 'gcr.io/cloud-builders/npm'
   args: ['install']
 
@@ -6,6 +11,9 @@ steps:
   args:
   - 'publish'
   - '--registry=https://us-central1.pkg.dev/$PROJECT_ID/private-marketplace-package'
+  env:
+    _AUTH: 'token'
+    _PASSWORD: '${credentials}'
 
 options:
   logging: CLOUD_LOGGING_ONLY
