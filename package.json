@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc --project tsconfig.json",
+    "publish": "npm publish --access=restricted"
   },
   "author": "Marketplace Rocket Team",
   "license": "ISC",

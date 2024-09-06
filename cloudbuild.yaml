@@ -1,0 +1,14 @@
+steps:
+- name: 'node'
+  entrypoint: 'npm'
+  args: ['npm', 'install']
+
+- name: node
+  entrypoint: node
+  args:
+  - 'npm'
+  - 'publish'
+  - '--registry=https://us-central1.pkg.dev/$PROJECT_ID/private-marketplace-package'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
